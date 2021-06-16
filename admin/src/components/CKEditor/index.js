@@ -3,7 +3,7 @@ import ClassicEditor from "ckeditor5-build-md";
 import "ckeditor5-build-md/build/translations/ar";
 import "ckeditor5-build-md/build/translations/cs";
 import "ckeditor5-build-md/build/translations/de";
-import "ckeditor5-build-md/build/translations/es";
+import "ckeditor5-build-md/build/translations/en";
 import "ckeditor5-build-md/build/translations/fr";
 import "ckeditor5-build-md/build/translations/id";
 import "ckeditor5-build-md/build/translations/it";

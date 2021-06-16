@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { isEmpty } from 'lodash';
-import { Label, InputDescription, InputErrors, useGlobalContext, prefixFileUrlWithBackendUrl, auth } from 'strapi-helper-plugin';
-import Editor from '../CKEditor';
-import MediaLib from '../MediaLib';
-import config from '../../config/ckeditor';
+import { isEmpty } from "lodash";
+import PropTypes from "prop-types";
+import React from "react";
+import {
+  InputDescription,
+  InputErrors,
+  Label,
+  useGlobalContext,
+} from "strapi-helper-plugin";
+import config from "../../config/ckeditor";
+import Editor from "../CKEditor";
 
 const Wysiwyg = ({
   inputDescription,
@@ -15,65 +19,32 @@ const Wysiwyg = ({
   onChange,
   value,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [editor, setEditor] = useState(null);
-  const toggleMediaLib = (editor) => {
-    if (editor) {
-      setEditor(editor);
-    }
-    setIsOpen(prev => !prev)
-  };
-  let spacer = !isEmpty(inputDescription) ? <div style={{ height: '.4rem' }} /> : <div />;
-
-  const { formatMessage, currentLocale } = useGlobalContext();
-  const mediaLibTitle = formatMessage({ id: 'Media Library' });
+  const { currentLocale } = useGlobalContext();
 
   config.language = currentLocale;
-
-  config.strapiMediaLib = {
-    onToggle: toggleMediaLib,
-    label: mediaLibTitle
-  };
-
-  config.strapiUpload = {
-    uploadUrl: `${strapi.backendURL}/upload`,
-    headers: {
-      Authorization: 'Bearer ' + auth.getToken(),
-    }
-  };
-
-  const onImageSelected = (data) => {
-    if (data && data.mime.includes('image')) {
-      const url = prefixFileUrlWithBackendUrl(data.url);
-      editor.model.change(writer => {
-        const imageElement = writer.createElement('image', {
-          src: url
-        });
-        editor.model.insertContent(imageElement, editor.model.document.selection);
-      });
-      // Handle videos and other type of files by adding some code
-    }
-  };
-
 
   if (!noErrorsDescription && !isEmpty(errors)) {
     spacer = <div />;
   }
 
-
   return (
     <div
       style={{
-        marginBottom: '1.6rem',
-        fontSize: '1.3rem',
-        fontFamily: 'Lato',
+        marginBottom: "1.6rem",
+        fontSize: "1.3rem",
+        fontFamily: "Lato",
       }}
     >
       <Label htmlFor={name} message={label} style={{ marginBottom: 10 }} />
       <Editor name={name} onChange={onChange} value={value} config={config} />
-      <InputDescription message={inputDescription} style={!isEmpty(inputDescription) ? { marginTop: '1.4rem' } : {}} />
-      <InputErrors errors={(!noErrorsDescription && errors) || []} name={name} />
-      <MediaLib isOpen={isOpen} onToggle={toggleMediaLib} onChange={onImageSelected} />
+      <InputDescription
+        message={inputDescription}
+        style={!isEmpty(inputDescription) ? { marginTop: "1.4rem" } : {}}
+      />
+      <InputErrors
+        errors={(!noErrorsDescription && errors) || []}
+        name={name}
+      />
     </div>
   );
 };
@@ -81,9 +52,9 @@ const Wysiwyg = ({
 Wysiwyg.defaultProps = {
   errors: [],
   inputDescription: null,
-  label: '',
+  label: "",
   noErrorsDescription: false,
-  value: '',
+  value: "",
 };
 
 Wysiwyg.propTypes = {

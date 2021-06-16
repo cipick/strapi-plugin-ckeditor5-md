@@ -1,28 +1,27 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from 'ckeditor5-build-strapi-wysiwyg';
-import styled from 'styled-components';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/ar';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/cs';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/de';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/es';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/fr';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/id';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/it';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/ko';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/nl';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/pl';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/pt';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/pt-br';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/ru';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/sk';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/th';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/tr';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/uk';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/vi';
-import 'ckeditor5-build-strapi-wysiwyg/build/translations/zh';
-
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "ckeditor5-build-md";
+import "ckeditor5-build-md/build/translations/ar";
+import "ckeditor5-build-md/build/translations/cs";
+import "ckeditor5-build-md/build/translations/de";
+import "ckeditor5-build-md/build/translations/es";
+import "ckeditor5-build-md/build/translations/fr";
+import "ckeditor5-build-md/build/translations/id";
+import "ckeditor5-build-md/build/translations/it";
+import "ckeditor5-build-md/build/translations/ko";
+import "ckeditor5-build-md/build/translations/nl";
+import "ckeditor5-build-md/build/translations/pl";
+import "ckeditor5-build-md/build/translations/pt";
+import "ckeditor5-build-md/build/translations/pt-br";
+import "ckeditor5-build-md/build/translations/ru";
+import "ckeditor5-build-md/build/translations/sk";
+import "ckeditor5-build-md/build/translations/th";
+import "ckeditor5-build-md/build/translations/tr";
+import "ckeditor5-build-md/build/translations/uk";
+import "ckeditor5-build-md/build/translations/vi";
+import "ckeditor5-build-md/build/translations/zh";
+import PropTypes from "prop-types";
+import React from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   .ck-editor__main {
@@ -41,7 +40,7 @@ const Editor = ({ onChange, name, value, config }) => {
       <CKEditor
         editor={ClassicEditor}
         data={value}
-        onReady={editor => {
+        onReady={(editor) => {
           if (value) {
             editor.setData(value);
           }

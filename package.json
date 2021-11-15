@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-react": "^3.0.2",
-    "ckeditor5-build-md": "^1.11.3"
+    "ckeditor5-build-md": "github:cipick/ckeditor5-build-strapi-wysiwyg"
   },
   "author": "Josyto (https://github.com/Josyto/)",
   "homepage": "https://github.com/Josyto/strapi-plugin-ckeditor5-md",
